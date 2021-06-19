@@ -13,8 +13,8 @@ public class ApplyPrint {
      */
     public static void applyAndPrint(int i, int j, MyFunction f) {
         for (; i <= j; i++) {
-            int temp = f.apply(i);
-            System.out.print(temp + "  ");
+            //int temp = f.apply(i);
+            System.out.print(f.apply(i) + "  ");
         }
         System.out.println();
     }
@@ -26,12 +26,16 @@ public class ApplyPrint {
      */
     public static void squareAnonym(int i, int j) {
         System.out.print("Square anonym : ");
-        applyAndPrint(i, j, new MyFunction() {
+        
+        
+        MyFunction nanonXSquare =  new MyFunction() {
             @Override
             public int apply(int i) {
                 return i * i;
             }
-        });
+        };
+        
+        applyAndPrint(i, j, nanonXSquare);
     }
 
 
@@ -104,7 +108,10 @@ public class ApplyPrint {
      */
     public static void squareLambda(int i, int j) {
         System.out.print("Square lambda : ");
-        applyAndPrint(i, j, (x -> x * x));
+        MyFunction lambdaXsquare = x -> x * x;
+        
+        applyAndPrint(i, j, lambdaXsquare);
+        //applyAndPrint(i, j, x -> x * x);
     }
 
     /**
@@ -156,7 +163,7 @@ public class ApplyPrint {
     /**
      * Prädikat zum Überprüfen, ob ein gegebener Integer Wert ungerade ist
      */
-    private static IntPredicate odd = new IntPredicate() {
+    public static IntPredicate odd = new IntPredicate() {
         public boolean test(int x) {
             return !(x % 2 == 0);
         }
@@ -164,7 +171,7 @@ public class ApplyPrint {
     /**
      * Prädikat als Lambda Ausdruck zum Überprüfen, ob ein gegebener Integer Wert gerade ist
      */
-    private static IntPredicate even = x -> (x % 2 == 0);
+    public static IntPredicate even = x -> (x % 2 == 0);
 
 }
    

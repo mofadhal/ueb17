@@ -11,7 +11,6 @@ public class Dialog {
     private final int EXPONENT = 3;
     private final int FIBONACCI = 4;
 
-
     Scanner input = new Scanner(System.in);
 
     /**
@@ -77,6 +76,12 @@ public class Dialog {
                 } else {
                     ApplyPrint.facLambda(firstNumber, secondNumber);
                 }
+                Fakultat tlfaku = new Fakultat();
+                ApplyPrint.applyAndPrint(firstNumber, secondNumber, tlfaku);
+                
+                Fakultat.Nested nestfaku = new Fakultat.Nested();
+                ApplyPrint.applyAndPrint(firstNumber, secondNumber, nestfaku);
+                
                 break;
             case EXPONENT:
                 if (Anonym) {
@@ -93,6 +98,7 @@ public class Dialog {
                 }
                 break;
             case ENDE:
+                                          
                 return;
             default:
                 System.out.println("somthing went wrong");
@@ -108,6 +114,27 @@ public class Dialog {
             funktion = getValidNumbe(0, 2);
             switch (funktion) {
                 case ENDE:
+                 Conditionate lambdaXsquare = x -> x * x;
+                ApplyPrint.applyAndPrint(1, 10,
+                                         lambdaXsquare.conditionateInput(ApplyPrint.even)
+                                     );
+                                     
+                Conditionate  lambdaFaku = x -> {
+                                                   if (x < 0) {
+                                                        throw new IllegalArgumentException("fac for negative is not defined");
+                                                    }
+                                                    int result = 1;
+                                                    if (x == 0) {
+                                                    return 1;
+                                                    }
+                                                    for (int a = x; a >= 1; a--) {
+                                                    result *= a;
+                                                 }
+                                                return result;
+                                               };
+                 ApplyPrint.applyAndPrint(1, 10,
+                                         lambdaFaku.conditionateOutput(ApplyPrint.odd)
+                                     ); 
                     return;
                 case ANONYM:
                     executeOperations(true);
